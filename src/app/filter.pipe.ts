@@ -9,7 +9,9 @@ export class FilterPipe implements PipeTransform {
     if (term === null) {
       return null;
     } else {
-      console.log('filter working');
+      // console.log('filter working');
+     document.getElementById('autoSelect').style.display = 'block';
+     document.getElementById('list').style.display = 'block';
       return cities.filter((ninja: any) => ninja.toLowerCase().includes(term.toLowerCase()));
     }
   }

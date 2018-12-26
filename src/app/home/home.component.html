@@ -1,0 +1,19 @@
+<form #city = 'ngForm' id='filter' (ngSubmit) = 'getWeather()'> 
+
+    <input type="text" name='city' id='city' [(ngModel)] ='cityName.city' autocomplete="off">
+   
+    <button value="Search" class="btn btn-warning">Search</button>
+</form>
+<div id='autoSelect'>
+        <ul>
+            <li *ngFor='let cityName of cities | filter:cityName.city' (click)= 'onSelect()'>{{ cityName  }}</li>
+        </ul>
+    </div>
+
+<div *ngIf ='weather'>
+Name : {{weather.name}}<br>
+{{weather.wind.speed}}<br>
+{{weather.wind.deg}}<br>
+weather : {{weather.weather[0].main}}<br>
+<!-- <a routerLink="register">Register</a> -->
+</div>

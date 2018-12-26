@@ -1,0 +1,45 @@
+<div class="container">
+
+    <form #registerForm = 'ngForm' (ngSubmit)= 'saveUser()'>
+
+        <div class="form-group" >
+        <label >Name:</label>
+        <input class='form-control' type = 'text' name = 'name' id = 'name' [(ngModel)] =userModel.name required>
+      </div>
+
+      <div class="form-group" >
+      <label >Mobile:</label>
+      <input class='form-control' type = 'number' name = 'mobile' id = 'mobile' [(ngModel)] =userModel.mobile required> 
+    </div>
+
+    <div class="form-group" >
+    <label >Email:</label>
+      <input class='form-control' type = 'email' name = 'email' id = 'email' [(ngModel)] =userModel.email required>
+    </div>
+
+    <div class="form-group" >
+    <label >City:</label>
+      <input class='form-control' type = 'text' name = 'city' id = 'city' [(ngModel)] =userModel.city required>
+    </div>
+
+    <div class="form-group" >
+    <label >Country:</label>
+      <input class='form-control' type = 'text' name = 'country' id = 'country' [(ngModel)] =userModel.country required>
+    </div>
+
+        <div class="form-group" >
+          <label >UserName:</label>
+          <input class='form-control' type = 'text' name = 'username' id = 'username' [(ngModel)] =userModel.username required>
+        </div>
+        
+        <div class="form-group" >
+          <label >Password:</label>
+          <input class='form-control' type = 'password' name = 'password' id = 'password' [(ngModel)] =userModel.password required>
+        </div>
+        
+        <button class="btn btn-primary ">Submit</button>
+        
+        </form>
+        <a routerLink="/">Login</a>
+      </div>
+    

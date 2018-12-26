@@ -29,6 +29,6 @@ export class HomeComponent implements OnInit {
 
   onSelect() {
     this.cityName.city = 'Bangalore';
-    console.log(document.querySelector('.autoSelect'));
+    console.log(document.querySelectorAll('.autoSelect'));
   }
 }

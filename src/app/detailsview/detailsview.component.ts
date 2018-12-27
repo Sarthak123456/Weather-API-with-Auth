@@ -16,7 +16,7 @@ export class DetailsviewComponent implements OnInit {
     const cityName = this.route.snapshot.paramMap.get('name');
     return this.data.getWeather(cityName).subscribe(res => {
       this.city = res;
-      console.log(this.city);
+      // console.log(this.city);
     });
   }
 

@@ -23,16 +23,21 @@ export class LoginComponent implements OnInit {
         this.route.navigateByUrl('home');
         this.loggedIn = true;
         localStorage.setItem('currentUser' , username);
-        console.log(this.loggedIn);
+        // console.log(this.loggedIn);
       }
   }
     this.loggedIn = false;
-    console.log(this.loggedIn);
+    // console.log(this.loggedIn);
 
   }
     // this.route.navigateByUrl('register');
 
 
   ngOnInit() {
+
+    if (localStorage.getItem('currentUser')) {
+    this.route.navigateByUrl('home');
+
+    }
   }
 }

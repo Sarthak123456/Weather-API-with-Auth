@@ -9,6 +9,16 @@
             <li *ngFor='let cityName of cities | filter:cityName.city' (click)= 'onSelect(cityName)'><a>{{ cityName  }}</a></li>
         </ul>
     </div> -->
+    {{currentLocation.name}}
+    <div *ngIf ='currentLocation'>
+            currentLocation : {{currentLocation.name}}<br>
+            {{currentLocation.wind.speed}}<br>
+            {{currentLocation.wind.deg}}<br>
+            weather : {{currentLocation.weather[0].main}}<br>
+            <!-- <a routerLink="register">Register</a> -->
+            </div>
+    <div class="weatherInfo">
+        <h3>Weather Forecast</h3>
 
       <form #city = 'ngForm' id='filter' (ngSubmit) = 'getWeather()' class="example-form">
         <mat-form-field class="example-full-width">
@@ -21,6 +31,7 @@
         </mat-form-field>
       </form>
 
+    </div>
 <div *ngIf ='weather'>
 Name : {{weather.name}}<br>
 {{weather.wind.speed}}<br>

@@ -49,6 +49,7 @@ export class HomeComponent implements OnInit {
 
   filteredOptions: Observable<string[]>;
   weather: any;
+  currentLocation: any;
   constructor(private data: DataService) { }
 
   ngOnInit() {
@@ -57,6 +58,19 @@ export class HomeComponent implements OnInit {
         startWith(''),
         map(value => this._filter(value))
       );
+
+      navigator.geolocation.getCurrentPosition((position) => {
+        // console.log("Got position", position.coords);
+        // console.log(Math.floor(position.coords.latitude));
+        // console.log(Math.floor(position.coords.longitude));
+        return this.data.getWeatherByCoord(Math.floor(position.coords.latitude).toString() ,
+        Math.floor(position.coords.longitude).toString())
+      .subscribe((res: any) => {
+        this.currentLocation = res;
+        // console.log(res);
+        // console.log(this.currentLocation);
+      });
+      });
   }
 
   private _filter(value: string): string[] {
@@ -67,7 +81,7 @@ export class HomeComponent implements OnInit {
 
 
   getWeather() {
-    console.log(this.cityName.city);
+    // console.log(this.cityName.city);
     this.data.getWeather(this.cityName.city)
       .subscribe(res => {
         this.weather = res;

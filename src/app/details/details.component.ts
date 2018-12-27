@@ -27,7 +27,7 @@ export class DetailsComponent implements OnInit {
       const currentUser = localStorage.getItem('currentUser');
       if (key.includes(currentUser + 'city')) {
         this.cities.push(value);
-        console.log(value);
+        // console.log(value);
       }
     }
   }

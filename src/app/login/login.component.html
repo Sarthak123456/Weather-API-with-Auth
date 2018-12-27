@@ -1,4 +1,7 @@
-<div class="container">
+
+<div class="login">
+
+<h3>Login</h3><br>
 <div class="error" *ngIf = !loggedIn ><p>Incorrect credentials</p></div>
 <form #userForm = 'ngForm' (ngSubmit)= 'onSave()' autocomplete="off">
     <div class="form-group" >
@@ -11,8 +14,11 @@
       <input class='form-control' type = 'password' name = 'password' id = 'password' [(ngModel)] =userModel.password required> 
     </div>
     
-    <button class="btn btn-primary ">Submit</button>
+    <button class="btn btn-dark " id = 'loginButton'>Login</button>
     
     </form>
-    <a routerLink="/register">Register</a>
+    <br>
+    <a routerLink="/register">Not a user?</a>
+
   </div>
+  

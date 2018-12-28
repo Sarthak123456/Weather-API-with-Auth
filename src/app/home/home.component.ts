@@ -18,6 +18,7 @@ import {map, startWith} from 'rxjs/operators';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+  error = 'loading' ;
   myControl = new FormControl();
   // options: string[] = ['One', 'Two', 'Three'];
   cityName = {'city' : ''};
@@ -69,7 +70,8 @@ export class HomeComponent implements OnInit {
         this.currentLocation = res;
         // console.log(res);
         // console.log(this.currentLocation);
-      });
+      }
+      );
       });
   }
 
@@ -80,7 +82,7 @@ export class HomeComponent implements OnInit {
   }
 
 
-  getWeather() {
+  getWeather(event: any) {
     // console.log(this.cityName.city);
     this.data.getWeather(this.cityName.city)
       .subscribe(res => {
@@ -88,9 +90,11 @@ export class HomeComponent implements OnInit {
         console.log(this.weather);
         const currentUser = localStorage.getItem('currentUser');
     localStorage.setItem(currentUser + 'city' + JSON.stringify(this.weather.id) , this.weather.name);
-        }
+        }, err => this.error = err
+
       );
   }
+
 
   onSelect(city: string) {
     this.cityName.city = city;

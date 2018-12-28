@@ -9,8 +9,8 @@
             <li *ngFor='let cityName of cities | filter:cityName.city' (click)= 'onSelect(cityName)'><a>{{ cityName  }}</a></li>
         </ul>
     </div> -->
-    {{currentLocation.name}}
-    <div *ngIf ='currentLocation'>
+    <div *ngIf = 'error'><p>{{error}}</p></div>
+    <div *ngIf ='!error' >
             currentLocation : {{currentLocation.name}}<br>
             {{currentLocation.wind.speed}}<br>
             {{currentLocation.wind.deg}}<br>
@@ -20,11 +20,11 @@
     <div class="weatherInfo">
         <h3>Weather Forecast</h3>
 
-      <form #city = 'ngForm' id='filter' (ngSubmit) = 'getWeather()' class="example-form">
+      <form #city = 'ngForm' id='filter' (keyup.enter) ='getWeather()' class="example-form">
         <mat-form-field class="example-full-width">
           <input type="text" name='city' id='city' [(ngModel)] ='cityName.city' placeholder="Pick City" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
           <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option" (click) = 'getWeather()'>
               {{option}}
             </mat-option>
           </mat-autocomplete>

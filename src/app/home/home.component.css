@@ -2,6 +2,8 @@
     min-width: 150px;
     max-width: 500px;
     width: 100%;
+    margin: 1% 0 15px 30%
+
   }
   
   .example-full-width {
@@ -11,3 +13,34 @@
   .weatherInfo{
     text-align: center;
   }
+.weatherLocation, .weatherCondition{
+    font-size: 3em;
+    font-weight: 500;
+
+}
+
+.temp
+{
+    font-size: 7em;
+    /* margin: 10% 10%; */
+}
+
+.unit{
+    font-size: 15px;
+}
+ 
+
+.currentWeatherLocation , .currentWeatherCondition{
+    font-size: 1em;
+
+}
+
+.currentTemp
+{
+    font-size: 1.5em;
+    margin: 0 10%;
+}
+
+.currentUnit{
+    font-size: 10px;
+}

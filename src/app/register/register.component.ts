@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   constructor(private router: Router) { }
-  valid = true;
 
   userModel = {'name' : '' , 'mobile' : '' , 'email' : '' , 'city' : '' , 'country' : '' , 'username' : '' , 'password' : ''};
 
@@ -19,8 +18,6 @@ export class RegisterComponent implements OnInit {
     if (val.username !== '' &&  val.password !== '' ) {
     localStorage.setItem(val.username, val.password );
     this.router.navigateByUrl('/');
-  } else {
-    this.valid = false;
   }
   }
 

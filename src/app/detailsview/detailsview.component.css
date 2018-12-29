@@ -1,0 +1,19 @@
+.weatherInfo{
+    text-align: center;
+  }
+.weatherLocation, .weatherCondition{
+    font-size: 3em;
+    font-weight: 500;
+
+}
+
+.temp
+{
+    font-size: 7em;
+    /* margin: 10% 10%; */
+}
+
+.unit{
+    font-size: 15px;
+}
+ 

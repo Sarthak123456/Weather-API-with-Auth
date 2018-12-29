@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
   }
     this.loggedIn = false;
     // console.log(this.loggedIn);
+    location.reload();
 
   }
     // this.route.navigateByUrl('register');

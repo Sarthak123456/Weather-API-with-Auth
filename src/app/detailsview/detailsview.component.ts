@@ -8,6 +8,7 @@ import { DataService } from '../data.service';
   styleUrls: ['./detailsview.component.css']
 })
 export class DetailsviewComponent implements OnInit {
+  error = 'loading...';
   city: any;
   constructor(private data: DataService,  private route: ActivatedRoute) { }
 
@@ -17,7 +18,9 @@ export class DetailsviewComponent implements OnInit {
     return this.data.getWeather(cityName).subscribe(res => {
       this.city = res;
       // console.log(this.city);
-    });
+    }, err => this.error = 'Something went wrong!'
+
+    );
   }
 
 }

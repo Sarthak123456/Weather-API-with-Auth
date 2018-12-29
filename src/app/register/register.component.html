@@ -28,17 +28,20 @@
       <input class='form-control' type = 'text' name = 'country' id = 'country' [(ngModel)] =userModel.country required>
     </div>
 
-        <div class="form-group" >
-          <label >UserName:</label>
-          <input class='form-control' ng-required="true" type = 'text' name = 'username' id = 'username' [(ngModel)] =userModel.username required>
-          <small *ngIf = '!valid'>Username can't be empty</small>
-        </div>
-        
-        <div class="form-group" >
-          <label >Password:</label>
-          <input class='form-control' ng-required="true" type = 'password' name = 'password' id = 'password' [(ngModel)] =userModel.password required>
-          <small *ngIf = '!valid'>Password can't be empty</small>
-        </div>
+    <div class="form-group" >
+        <label >UserName:</label>
+        <input required #username = 'ngModel' [class.is-invalid] = 'username.invalid && username.touched' class='form-control' type = 'text' name = 'username' id = 'username' [(ngModel)] =userModel.username >
+        <small class='text-danger' [class.d-none]='username.valid ||  username.untouched'>Username is required</small>
+      
+      </div>
+      
+      <div class="form-group" >
+        <label >Password:</label>
+        <input required #password = 'ngModel' [class.is-invalid] = 'password.invalid && password.touched' class='form-control' type = 'password' name = 'password' id = 'password' [(ngModel)] =userModel.password > 
+        <small class='text-danger' [class.d-none]='password.valid ||  password.untouched'>Password is required</small>
+     
+      </div>
+  
         
         <span> <button id = 'registerBtn' class="btn btn-primary ">Register</button> <a class ='btn btn-secondary' id = 'loginBtn' routerLink="/">Login</a> </span>
         

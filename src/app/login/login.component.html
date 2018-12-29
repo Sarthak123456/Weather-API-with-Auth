@@ -6,13 +6,18 @@
 <form  (ngSubmit)= 'onSave()' autocomplete="off">
     <div class="form-group" >
       <label >UserName:</label>
-      <input ng-required="true" class='form-control' type = 'text' name = 'username' id = 'username' [(ngModel)] =userModel.username >
+      <input required #username = 'ngModel' [class.is-invalid] = 'username.invalid && username.touched' class='form-control' type = 'text' name = 'username' id = 'username' [(ngModel)] =userModel.username >
+      <small class='text-danger' [class.d-none]='username.valid ||  username.untouched'>Username is required</small>
+    
     </div>
     
     <div class="form-group" >
       <label >Password:</label>
-      <input ng-required="true" class='form-control' type = 'password' name = 'password' id = 'password' [(ngModel)] =userModel.password > 
+      <input required #password = 'ngModel' [class.is-invalid] = 'password.invalid && password.touched' class='form-control' type = 'password' name = 'password' id = 'password' [(ngModel)] =userModel.password > 
+      <small class='text-danger' [class.d-none]='password.valid ||  password.untouched'>Password is required</small>
+   
     </div>
+
     
     <button class="btn btn-dark " id = 'loginButton'>Login</button>
     

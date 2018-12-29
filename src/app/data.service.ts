@@ -13,13 +13,12 @@ export class DataService {
 
   getWeather(city: string) {
 
-    return this.http.get('http://api.openweathermap.org/data/2.5/weather?=' + city + '&APPID=823ff873c1dfec24ab2cf53a54d75526')
+    return this.http.get('http://api.openweathermap.org/data/2.5/weather?q=' + city +
+    '&APPID=823ff873c1dfec24ab2cf53a54d75526&mode=json&units=metric')
     .pipe (
       catchError(err => {
-        if (err.status === 400){
         console.log('Handling error locally and rethrowing it...', err);
-        return Observable.throw(err.message);
-        }
+        return Observable.throw(err);
     })
     );
   }
@@ -27,15 +26,11 @@ export class DataService {
   getWeatherByCoord(lat: string, long: string) {
 
     return this.http.get('http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long +
-    '&APPID=823ff873c1dfec24ab2cf53a54d75526');
+    '&APPID=823ff873c1dfec24ab2cf53a54d75526&mode=json&units=metric');
   }
 
   loggedIn() {
     return !!localStorage.getItem('currentUser');
   }
 
-  private handleError(error: HttpErrorResponse) {
-    return new ErrorObservable();
-
-  }
 }

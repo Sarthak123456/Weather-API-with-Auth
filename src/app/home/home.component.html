@@ -9,20 +9,20 @@
             <li *ngFor='let cityName of cities | filter:cityName.city' (click)= 'onSelect(cityName)'><a>{{ cityName  }}</a></li>
         </ul>
     </div> -->
-    <div *ngIf = 'error'><p>{{error}}</p></div>
-    <div *ngIf ='!error' >
-            currentLocation : {{currentLocation.name}}<br>
-            {{currentLocation.wind.speed}}<br>
-            {{currentLocation.wind.deg}}<br>
-            weather : {{currentLocation.weather[0].main}}<br>
-            <!-- <a routerLink="register">Register</a> -->
-            </div>
+    
     <div class="weatherInfo">
-        <h3>Weather Forecast</h3>
-
-      <form #city = 'ngForm' id='filter' (keyup.enter) ='getWeather()' class="example-form">
+        <h2>Weather Forecast</h2>
+        <div *ngIf = '!currentLocation'><p>{{loadingCurrentLocation}}</p></div>
+    <div *ngIf ='currentLocation' >
+        <span class="currentWeatherLocation">{{currentLocation.name}},{{currentLocation.sys.country}}</span>
+        <span class="currentTemp">{{currentLocation.main.temp | number: '1.0-0' }}<sup><span class="currentUnit">°C</span></sup></span>
+        <span class="currentWeatherCondition">{{currentLocation.weather[0].main}}</span>
+            </div>
+            
+      <form #city = 'ngForm' id='filter' (ngSubmit) = 'getWeather()' (keyup.enter) ='getWeather()' class="example-form">
+        
         <mat-form-field class="example-full-width">
-          <input type="text" name='city' id='city' [(ngModel)] ='cityName.city' placeholder="Pick City" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+          <input type="text" name='city' id='city' [(ngModel)] ='cityName.city' placeholder="Search for location or keyword" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
           <mat-autocomplete #auto="matAutocomplete">
             <mat-option *ngFor="let option of filteredOptions | async" [value]="option" (click) = 'getWeather()'>
               {{option}}
@@ -30,12 +30,14 @@
           </mat-autocomplete>
         </mat-form-field>
       </form>
-
-    </div>
-<div *ngIf ='weather'>
-Name : {{weather.name}}<br>
-{{weather.wind.speed}}<br>
-{{weather.wind.deg}}<br>
-weather : {{weather.weather[0].main}}<br>
-<!-- <a routerLink="register">Register</a> -->
+      <div *ngIf = '!weather'><p>{{loadingWeather}}</p></div>
+<div *ngIf ='weather' class="weatherDetails">
+<span class="weatherLocation">{{weather.name}},{{weather.sys.country}}</span><br>
+<span class="temp">{{weather.main.temp | number: '1.0-0' }}<sup><span class="unit">°C</span></sup></span><br>
+<span class="weatherCondition">{{weather.weather[0].main}}</span>
 </div>
+    </div>
+
+    
+
+

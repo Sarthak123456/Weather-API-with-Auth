@@ -18,7 +18,8 @@ import {map, startWith} from 'rxjs/operators';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  error = 'loading' ;
+  loadingWeather = '' ;
+  loadingCurrentLocation = '' ;
   myControl = new FormControl();
   // options: string[] = ['One', 'Two', 'Three'];
   cityName = {'city' : ''};
@@ -64,13 +65,14 @@ export class HomeComponent implements OnInit {
         // console.log("Got position", position.coords);
         // console.log(Math.floor(position.coords.latitude));
         // console.log(Math.floor(position.coords.longitude));
-        return this.data.getWeatherByCoord(Math.floor(position.coords.latitude).toString() ,
+        this.loadingCurrentLocation = 'loading...';
+           return this.data.getWeatherByCoord(Math.floor(position.coords.latitude).toString() ,
         Math.floor(position.coords.longitude).toString())
       .subscribe((res: any) => {
         this.currentLocation = res;
         // console.log(res);
         // console.log(this.currentLocation);
-      }
+      }, err => this.loadingCurrentLocation = 'Something went wrong!'
       );
       });
   }
@@ -84,21 +86,15 @@ export class HomeComponent implements OnInit {
 
   getWeather(event: any) {
     // console.log(this.cityName.city);
+    this.loadingWeather = 'loading...';
     this.data.getWeather(this.cityName.city)
       .subscribe(res => {
         this.weather = res;
-        console.log(this.weather);
+        // console.log(this.weather);
         const currentUser = localStorage.getItem('currentUser');
     localStorage.setItem(currentUser + 'city' + JSON.stringify(this.weather.id) , this.weather.name);
-        }, err => this.error = err
+        }, err => this.loadingWeather = 'Something went wrong!'
 
       );
-  }
-
-
-  onSelect(city: string) {
-    this.cityName.city = city;
-    document.getElementById('list').style.display = 'none';
-    document.getElementById('autoSelect').style.display = 'none';
   }
 }

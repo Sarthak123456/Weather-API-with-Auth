@@ -1,6 +1,10 @@
-<div *ngIf ='city'>
-{{city.name}}<br>
-{{city.weather[0].main}}<br>
-{{city.wind.speed}}<br>
 
-<div></div>
+<div *ngIf = '!city'><p>{{error}}</p></div>
+<div *ngIf ='city' class="weatherInfo">
+
+    <span class="weatherLocation">{{city.name}},{{city.sys.country}}</span><br>
+    <span class="temp">{{city.main.temp | number: '1.0-0' }}<sup><span class="unit">°C</span></sup></span><br>
+    <span class="weatherCondition">{{city.weather[0].main}}</span>
+ 
+
+</div>

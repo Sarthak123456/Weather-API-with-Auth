@@ -5,8 +5,8 @@
   <nav>
     <ul>
         <li><a routerLink="/home">Home</a></li>
-        <li><a routerLink="/details">Details</a></li>
-        <li><a (click) = 'logout()' style="cursor: pointer">Logout</a></li>
+        <li><a (click) = 'login()' routerLink="/details">History</a></li>
+        <li *ngIf = loggedIn><a (click) = 'logout()' style="cursor: pointer">Logout</a></li>
         <!-- <li><a routerLink="/contact">Contact us</a></li> -->
   
     </ul>

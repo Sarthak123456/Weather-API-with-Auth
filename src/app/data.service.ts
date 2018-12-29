@@ -13,7 +13,7 @@ export class DataService {
 
   getWeather(city: string) {
 
-    return this.http.get('http://api.openweathermap.org/data/2.5/weather?q=' + city +
+    return this.http.get('https://api.openweathermap.org/data/2.5/weather?q=' + city +
     '&APPID=823ff873c1dfec24ab2cf53a54d75526&mode=json&units=metric')
     .pipe (
       catchError(err => {
@@ -25,7 +25,7 @@ export class DataService {
 
   getWeatherByCoord(lat: string, long: string) {
 
-    return this.http.get('http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long +
+    return this.http.get('https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long +
     '&APPID=823ff873c1dfec24ab2cf53a54d75526&mode=json&units=metric');
   }
 

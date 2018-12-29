@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
     'Rohtak', 'Panipat', 'Darbhanga', 'Kharagpur', 'Aizawl', 'Ichalkaranji', 'Tirupati', 'Karnal', 'Bathinda',
     'Rampur', 'Shivamogga', 'Ratlam', 'Modinagar', 'Durg', 'Shillong', 'Imphal', 'Hapur', 'Ranipet',
     'Anantapur', 'Arrah', 'Karimnagar', 'Parbhani', 'Etawah', 'Bharatpur', 'Begusarai', 'New', 'Delhi',
-     'Chhapra', 'Kadapa', 'Ramagundam', 'Pali', 'Satna', 'Vizianagaram', 'Katihar', 'Hardwar', 'Sonipat', 
+     'Chhapra', 'Kadapa', 'Ramagundam', 'Pali', 'Satna', 'Vizianagaram', 'Katihar', 'Hardwar', 'Sonipat',
     'Nagercoil', 'Thanjavur', 'Murwara', '(Katni)', 'Naihati', 'Sambhal', 'Nadiad', 'Yamunanagar', 'English',
     'Bazar', 'Eluru', 'Munger', 'Panchkula', 'Raayachuru', 'Panvel', 'Deoghar', 'Ongole', 'Nandyal', 'Morena',
     'Bhiwani', 'Porbandar', 'Palakkad', 'Anand', 'Purnia', 'Baharampur', 'Barmer', 'Morvi', 'Orai', 'Bahraich',
@@ -84,7 +84,7 @@ export class HomeComponent implements OnInit {
   }
 
 
-  getWeather(event: any) {
+  getWeather() {
     // console.log(this.cityName.city);
     this.loadingWeather = 'loading...';
     this.data.getWeather(this.cityName.city)
